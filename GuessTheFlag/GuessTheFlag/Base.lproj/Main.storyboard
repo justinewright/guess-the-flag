@@ -63,9 +63,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="jJI-RC-q7K"/>
                     <connections>
-                        <outlet property="button1" destination="bPt-K7-oNu" id="xAo-Qq-MU8"/>
-                        <outlet property="button2" destination="8gE-dd-CwI" id="4RY-Uh-qxa"/>
-                        <outlet property="button3" destination="hLQ-YL-JHF" id="4wD-hc-63j"/>
+                        <outletCollection property="buttons" destination="bPt-K7-oNu" collectionClass="NSMutableArray" id="D76-Lq-TZ7"/>
+                        <outletCollection property="buttons" destination="8gE-dd-CwI" collectionClass="NSMutableArray" id="CP2-OU-rMF"/>
+                        <outletCollection property="buttons" destination="hLQ-YL-JHF" collectionClass="NSMutableArray" id="8gZ-qM-SyF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

@@ -9,10 +9,8 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    @IBOutlet private weak var button1: UIButton!
-    @IBOutlet private weak var button2: UIButton!
-    @IBOutlet private weak var button3: UIButton!
-    
+    @IBOutlet private var buttons: [UIButton]!
+
     private lazy var countries = [String]() // lazy = delay instantiation until required
     private lazy var score = 0
     private lazy var correctAnswer = 0
@@ -43,28 +41,33 @@ class ViewController: UIViewController {
     }
     
     private func applyStyleToButtons(){
-        button1.layer.borderWidth = 1
-        button2.layer.borderWidth = 1
-        button3.layer.borderWidth = 1
-        button1.layer.borderColor = UIColor.lightGray.cgColor
-        button2.layer.borderColor = UIColor.lightGray.cgColor
-        button3.layer.borderColor = UIColor.lightGray.cgColor
+        for button in buttons{
+            button.layer.borderWidth = 1
+            button.layer.borderColor = UIColor.lightGray.cgColor
+        }
         
         // UIColor (red:, green:, blue:).cgColour
         
     }
+    private func allDeselect(){}
     // UIAlertAction needed for alertController
     private func askQuestion(action: UIAlertAction! = nil)->Void{
-        countries.shuffle()
-        button1.setImage(UIImage(named: countries[0]), for: .normal)
-        button2.setImage(UIImage(named: countries[1]), for: .normal)
-        button3.setImage(UIImage(named: countries[2]), for: .normal)
+        chooseThreeRandomCountries()
         //for: .normal -> takes in parameter for state of button
         // .normal -> from a struct
         correctAnswer = Int.random(in: 0...2)
         title = countries[correctAnswer].uppercased()
     }
-    
+    private func chooseThreeRandomCountries(){
+        countries.shuffle()
+        let countriesRange = (0...countries.count-1).shuffled()
+        var index = 0
+        for button in buttons{
+            let name = countries[countriesRange[index]]
+            button.setImage(UIImage(named: name), for: .normal)
+            index += 1
+        }
+    }
     @IBAction func buttonTapped(_ sender: UIButton) {
         score = sender.tag == correctAnswer ? score + 1: score - 1
         let title = sender.tag == correctAnswer ? "Correct": "Wrong"
