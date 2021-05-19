@@ -137,6 +137,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="jJI-RC-q7K"/>
                     <connections>
+                        <outlet property="countryText" destination="Qaf-8m-OHD" id="UKq-hb-Ik8"/>
+                        <outlet property="progressBar" destination="yVs-jM-Jr4" id="KL4-X4-irk"/>
+                        <outlet property="progressText" destination="uvn-al-6x9" id="CEu-IG-ltI"/>
                         <outletCollection property="buttons" destination="bPt-K7-oNu" collectionClass="NSMutableArray" id="33s-ld-feG"/>
                         <outletCollection property="buttons" destination="8gE-dd-CwI" collectionClass="NSMutableArray" id="CP2-OU-rMF"/>
                         <outletCollection property="buttons" destination="OI3-1A-HBh" collectionClass="NSMutableArray" id="Gjq-uM-nhz"/>
