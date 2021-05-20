@@ -108,10 +108,7 @@ class ViewController: UIViewController {
             }
             showAlert(title: title, message:  msg.randomElement()!  )
         }
-//        if currentQuestionCount == maxQuestionCount {
-//            let title = "Game Over"
-//            showFinalAlert(title: title)
-//        }
+
     }
     private func processAnswer(actualAnswer:Int)->String{
         score = actualAnswer == correctAnswer ? score + 1: score - 1
@@ -124,14 +121,11 @@ class ViewController: UIViewController {
     }
     
     private func showAlert(title:String, message: String = "Good job!"){
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         if currentQuestionCount < maxQuestionCount{
-            alertController.addAction(UIAlertAction(title: "Continue", style: .default, handler: askQuestion))
+            showQuestionFeedbackAlert(title: title, message: message)
+        }else{
+            showFinalAlert(title: title)
         }
-        else{
-            alertController.addAction(UIAlertAction(title: "Quit", style: .default, handler: quit))
-        }
-        present(alertController, animated: true)
     }
     
     private func highlightBadFlag(actualAnswer:Int){
@@ -149,12 +143,16 @@ class ViewController: UIViewController {
     private func quit(action: UIAlertAction! = nil){
         exit(0)
     }
-    private func showFinalAlert(title:String){
+    private func showQuestionFeedbackAlert(title:String, message: String){
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "Continue", style: .default, handler: askQuestion))
+        present(alertController, animated: true)
+    }
+    private func showFinalAlert(title:String ){
         let alertController = UIAlertController(title: title, message: "Your final score is \(score)/10", preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "Quit", style: .default, handler: quit))
         
         present(alertController, animated: true)
-        
     }
     
     private func updateProgress(){
