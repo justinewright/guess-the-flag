@@ -9,18 +9,24 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    @IBOutlet private weak var button1: UIButton!
-    @IBOutlet private weak var button2: UIButton!
-    @IBOutlet private weak var button3: UIButton!
+    @IBOutlet private var buttons: [UIButton]!
+
+    @IBOutlet weak var countryText: UILabel!
+    @IBOutlet weak var progressBar: UIProgressView!
+    
+    @IBOutlet weak var progressText: UILabel!
     
     private lazy var countries = [String]() // lazy = delay instantiation until required
     private lazy var score = 0
     private lazy var correctAnswer = 0
-    
+    private var maxQuestionCount = 10
+    private var currentQuestionCount = 0
     override func viewDidLoad() {
         super.viewDidLoad()
         loadCountries()
         applyStyleToButtons()
+        allDeselect()
+        resetProgressBar()
         askQuestion()
     }
     
@@ -43,40 +49,132 @@ class ViewController: UIViewController {
     }
     
     private func applyStyleToButtons(){
-        button1.layer.borderWidth = 1
-        button2.layer.borderWidth = 1
-        button3.layer.borderWidth = 1
-        button1.layer.borderColor = UIColor.lightGray.cgColor
-        button2.layer.borderColor = UIColor.lightGray.cgColor
-        button3.layer.borderColor = UIColor.lightGray.cgColor
+        for button in buttons{
+            button.layer.borderWidth = 1
+            button.layer.borderColor = UIColor.lightGray.cgColor
+            button.layer.cornerRadius = 5
+            button.tintColor = UIColor.white
+            button.layer.masksToBounds = true
+        }
         
         // UIColor (red:, green:, blue:).cgColour
         
     }
+    private func allDeselect(){
+        for button in buttons{
+            button.layer.borderColor = UIColor.lightGray.cgColor
+            button.layer.borderWidth = 1
+            button.alpha = 0.75
+        }
+    }
     // UIAlertAction needed for alertController
     private func askQuestion(action: UIAlertAction! = nil)->Void{
-        countries.shuffle()
-        button1.setImage(UIImage(named: countries[0]), for: .normal)
-        button2.setImage(UIImage(named: countries[1]), for: .normal)
-        button3.setImage(UIImage(named: countries[2]), for: .normal)
+        chooseThreeRandomCountries()
         //for: .normal -> takes in parameter for state of button
         // .normal -> from a struct
-        correctAnswer = Int.random(in: 0...2)
-        title = countries[correctAnswer].uppercased()
+        correctAnswer = Int.random(in: 0...3)
+        updateQuestionCount()
+        allDeselect()
+        setCorrectCountryText()
+        setScore()
+        updateProgress()
     }
     
+    private func updateQuestionCount(){
+        currentQuestionCount += 1
+    }
+    private func setCorrectCountryText(){
+        countryText.text = "\(countries[correctAnswer].uppercased())"
+    }
+    private func setScore(){
+        title = "Your Score: \(score)/10"
+    }
+    private func chooseThreeRandomCountries(){
+        countries.shuffle()
+        var index = 0
+        for button in buttons{
+            let name = countries[index]
+            button.setImage(UIImage(named: name), for: .normal)
+            index += 1
+        }
+    }
     @IBAction func buttonTapped(_ sender: UIButton) {
-        score = sender.tag == correctAnswer ? score + 1: score - 1
-        let title = sender.tag == correctAnswer ? "Correct": "Wrong"
-        showAlert(title: title)
+        let title = processAnswer(actualAnswer: sender.tag)
+        // show alerts
+        if currentQuestionCount <= maxQuestionCount {
+            var msg = ["Good job! :)", "Fabulous! :)", "Amazing! :)"]
+            if title == "Wrong"{
+                msg = ["You guessed \(countries[sender.tag]) :("]
+            }
+            showAlert(title: title, message:  msg.randomElement()!  )
+        }
+
+    }
+    private func processAnswer(actualAnswer:Int)->String{
+        score = actualAnswer == correctAnswer ? score + 1: score - 1
+        let title = actualAnswer == correctAnswer ? "Correct": "Wrong"
+        highlightRightFlag()
+        if title == "Wrong"{
+            highlightBadFlag(actualAnswer: actualAnswer)
+        }
+        return title
     }
     
-    private func showAlert(title:String){
-        let alertController = UIAlertController(title: title, message: "Your score is \(score)", preferredStyle: .alert)
+    private func showAlert(title:String, message: String = "Good job!"){
+        if currentQuestionCount < maxQuestionCount{
+            showQuestionFeedbackAlert(title: title, message: message)
+        }else{
+            showFinalAlert(title: title)
+        }
+    }
+    
+    private func highlightBadFlag(actualAnswer:Int){
+        buttons[actualAnswer].layer.borderColor = UIColor.red.cgColor
+        buttons[actualAnswer].alpha = 1
+        buttons[actualAnswer].layer.borderWidth = 5
+        
+    }
+    private func highlightRightFlag(){
+        buttons[correctAnswer].layer.borderColor = UIColor.green.cgColor
+        buttons[correctAnswer].alpha = 1
+        buttons[correctAnswer].layer.borderWidth = 5
+    }
+    
+    private func quit(action: UIAlertAction! = nil){
+        exit(0)
+    }
+    private func showQuestionFeedbackAlert(title:String, message: String){
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "Continue", style: .default, handler: askQuestion))
+        present(alertController, animated: true)
+    }
+    private func showFinalAlert(title:String ){
+        let alertController = UIAlertController(title: title, message: "Your final score is \(score)/10", preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "Quit", style: .default, handler: quit))
         
         present(alertController, animated: true)
-
+    }
+    
+    private func updateProgress(){
+        let percentage = calcPercentageQuestionsLeft()
+        updateProgressBar(percentage: percentage)
+        updateProgressText(percentage: percentage)
+    }
+    private func resetProgressBar(){
+        progressBar.progress = 1.0
+    }
+    
+    private func updateProgressBar(percentage: Float){
+        progressBar.progress = percentage
+    }
+    private func updateProgressText(percentage: Float){
+        progressText.text = "\(Int(round(percentage*100.00) ))%"
+    }
+    
+    private func calcPercentageQuestionsLeft()->Float{
+        let difference = Float(maxQuestionCount - currentQuestionCount)
+        let percent:Float = difference/Float(maxQuestionCount)
+        return 1.0 - percent
     }
     //ca layer = core animation layer
     
@@ -91,13 +189,13 @@ class ViewController: UIViewController {
     // 3. pull request
     
     // 2 Challenge
-    // -show score in navigation bar
-    // -keep track of how many questions have been asked
-    // -max queestions 10
-    // -10 -> final alert controller
+    // + show score in navigation bar
+    // + keep track of how many questions have been asked
+    // +max queestions 10
+    // +10 -> final alert controller
     
     // 3 challenge
-    // mistake
-    // tell them what flag they selected, and what flag was right
+    // +mistake
+    // +tell them what flag they selected, and what flag was right
 }
 
