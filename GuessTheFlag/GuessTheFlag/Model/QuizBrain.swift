@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct QuizBrain{
+class QuizBrain{
     private var countries = [
         "estonia",
         "france",
@@ -24,7 +24,7 @@ struct QuizBrain{
     ]
     private var maxQuestionCount = 10
     private var questionNumber = 0
-    private var score = 0
+    private(set) var score = 0
     private lazy var correctAnswer = 0
 
     
@@ -33,26 +33,21 @@ struct QuizBrain{
         questionNumber = 0
     }
     
-    mutating func nextQuestion(){
+    func nextQuestion() {
         questionNumber += 1
         correctAnswer = Int.random(in: 0...3)
         countries.shuffle()
     }
     
-    mutating func getCountryChoices()-> [String]{
-        let chosenCountries = countries[...3]
-        return Array(chosenCountries)
-    }
-    
-    mutating func getCorrectAnswerText()->String{
+    var correctAnswerText: String {
         return countries[correctAnswer].uppercased()
     }
     
-    mutating func getCorrectAnswerIndex()->Int{
-        return correctAnswer
+    var correctAnswerIndex: Int {
+        correctAnswer
     }
     
-    mutating func checkAnswer(answer:Int) -> Bool{
+    func checkAnswer(answer:Int) -> Bool {
         let isCorrect = countries[correctAnswer] == countries[answer]
         score += isCorrect ? 1 : -1
         return isCorrect
@@ -62,15 +57,17 @@ struct QuizBrain{
         return countries[index]
     }
     
-    func getProgress()->Float{
-        return Float(questionNumber+1)/Float(maxQuestionCount)
+    var progress: Float {
+        return Float(questionNumber)/Float(maxQuestionCount)
     }
     
-    func getScore()->Int{
-        return score
-    }
-    
-    func isGameRunning()->Bool{
+    var isGameRunning: Bool {
         return questionNumber+1 < maxQuestionCount
+    }
+    
+    func reset() {
+        nextQuestion()
+        score = 0
+        questionNumber = 0
     }
 }
