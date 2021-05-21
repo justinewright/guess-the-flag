@@ -96,14 +96,14 @@ class ViewController: UIViewController {
  
     private func showAlert(title: String, message: String) {
         guard quizBrain.isGameRunning else {
-            showQuestionFeedbackAlert2(title: title, message: message, actionTitle: "Restart", handler: restart)
+            addAlertController(title: title, message: message, actionTitle: "Restart", handler: restart)
             maxProgressBar()
             return
         }
-        showQuestionFeedbackAlert2(title: title, message: message, actionTitle: "Continue", handler: askQuestion)
+        addAlertController(title: title, message: message, actionTitle: "Continue", handler: askQuestion)
     }
     
-    private func showQuestionFeedbackAlert2(title: String, message: String, actionTitle: String, handler: ((UIAlertAction) -> Void)?) {
+    private func addAlertController(title: String, message: String, actionTitle: String, handler: ((UIAlertAction) -> Void)?) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: actionTitle, style: .default, handler: handler))
         present(alertController, animated: true)
