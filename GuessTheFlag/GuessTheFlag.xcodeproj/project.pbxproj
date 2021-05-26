@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		210BAE67265D3CFB00A50918 /* QuizBrainTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210BAE66265D3CFB00A50918 /* QuizBrainTests.swift */; };
+		210BAE6C265D47C900A50918 /* QuizBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 211FFFF52656CF440048ADF8 /* QuizBrain.swift */; };
 		211FFFF62656CF440048ADF8 /* QuizBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 211FFFF52656CF440048ADF8 /* QuizBrain.swift */; };
 		21DA042E2655284200A3E5B9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21DA042D2655284200A3E5B9 /* AppDelegate.swift */; };
 		21DA04302655284200A3E5B9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21DA042F2655284200A3E5B9 /* SceneDelegate.swift */; };
@@ -36,6 +38,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		210BAE64265D3CFB00A50918 /* QuizBrainTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QuizBrainTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		210BAE66265D3CFB00A50918 /* QuizBrainTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizBrainTests.swift; sourceTree = "<group>"; };
+		210BAE68265D3CFB00A50918 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		211FFFF52656CF440048ADF8 /* QuizBrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizBrain.swift; sourceTree = "<group>"; };
 		21DA042A2655284200A3E5B9 /* GuessTheFlag.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GuessTheFlag.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		21DA042D2655284200A3E5B9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -54,6 +59,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		210BAE61265D3CFB00A50918 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		21DA04272655284200A3E5B9 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -78,6 +90,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		210BAE65265D3CFB00A50918 /* QuizBrainTests */ = {
+			isa = PBXGroup;
+			children = (
+				210BAE66265D3CFB00A50918 /* QuizBrainTests.swift */,
+				210BAE68265D3CFB00A50918 /* Info.plist */,
+			);
+			path = QuizBrainTests;
+			sourceTree = "<group>";
+		};
 		211FFFF22656CEF10048ADF8 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -108,6 +129,7 @@
 				21DA042C2655284200A3E5B9 /* GuessTheFlag */,
 				21DA04432655284500A3E5B9 /* GuessTheFlagTests */,
 				21DA044E2655284500A3E5B9 /* GuessTheFlagUITests */,
+				210BAE65265D3CFB00A50918 /* QuizBrainTests */,
 				21DA042B2655284200A3E5B9 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -118,6 +140,7 @@
 				21DA042A2655284200A3E5B9 /* GuessTheFlag.app */,
 				21DA04402655284500A3E5B9 /* GuessTheFlagTests.xctest */,
 				21DA044B2655284500A3E5B9 /* GuessTheFlagUITests.xctest */,
+				210BAE64265D3CFB00A50918 /* QuizBrainTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -158,6 +181,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		210BAE63265D3CFB00A50918 /* QuizBrainTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 210BAE69265D3CFB00A50918 /* Build configuration list for PBXNativeTarget "QuizBrainTests" */;
+			buildPhases = (
+				210BAE60265D3CFB00A50918 /* Sources */,
+				210BAE61265D3CFB00A50918 /* Frameworks */,
+				210BAE62265D3CFB00A50918 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = QuizBrainTests;
+			productName = QuizBrainTests;
+			productReference = 210BAE64265D3CFB00A50918 /* QuizBrainTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		21DA04292655284200A3E5B9 /* GuessTheFlag */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 21DA04542655284500A3E5B9 /* Build configuration list for PBXNativeTarget "GuessTheFlag" */;
@@ -220,6 +260,9 @@
 				LastSwiftUpdateCheck = 1250;
 				LastUpgradeCheck = 1250;
 				TargetAttributes = {
+					210BAE63265D3CFB00A50918 = {
+						CreatedOnToolsVersion = 12.5;
+					};
 					21DA04292655284200A3E5B9 = {
 						CreatedOnToolsVersion = 12.5;
 					};
@@ -249,11 +292,19 @@
 				21DA04292655284200A3E5B9 /* GuessTheFlag */,
 				21DA043F2655284500A3E5B9 /* GuessTheFlagTests */,
 				21DA044A2655284500A3E5B9 /* GuessTheFlagUITests */,
+				210BAE63265D3CFB00A50918 /* QuizBrainTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		210BAE62265D3CFB00A50918 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		21DA04282655284200A3E5B9 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -281,6 +332,15 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		210BAE60265D3CFB00A50918 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				210BAE6C265D47C900A50918 /* QuizBrain.swift in Sources */,
+				210BAE67265D3CFB00A50918 /* QuizBrainTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		21DA04262655284200A3E5B9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -343,6 +403,40 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		210BAE6A265D3CFB00A50918 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = QuizBrainTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.myCompany.QuizBrainTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		210BAE6B265D3CFB00A50918 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = QuizBrainTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.myCompany.QuizBrainTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		21DA04522655284500A3E5B9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -499,7 +593,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = GuessTheFlagTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
@@ -512,7 +605,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GuessTheFlag.app/GuessTheFlag";
 			};
 			name = Debug;
 		};
@@ -520,7 +612,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = GuessTheFlagTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
@@ -533,7 +624,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GuessTheFlag.app/GuessTheFlag";
 			};
 			name = Release;
 		};
@@ -578,6 +668,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		210BAE69265D3CFB00A50918 /* Build configuration list for PBXNativeTarget "QuizBrainTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				210BAE6A265D3CFB00A50918 /* Debug */,
+				210BAE6B265D3CFB00A50918 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		21DA04252655284200A3E5B9 /* Build configuration list for PBXProject "GuessTheFlag" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
