@@ -16,7 +16,6 @@
 		21DA04352655284200A3E5B9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21DA04332655284200A3E5B9 /* Main.storyboard */; };
 		21DA04372655284500A3E5B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 21DA04362655284500A3E5B9 /* Assets.xcassets */; };
 		21DA043A2655284500A3E5B9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21DA04382655284500A3E5B9 /* LaunchScreen.storyboard */; };
-		21DA04452655284500A3E5B9 /* GuessTheFlagTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21DA04442655284500A3E5B9 /* GuessTheFlagTests.swift */; };
 		21DA04502655284500A3E5B9 /* GuessTheFlagUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21DA044F2655284500A3E5B9 /* GuessTheFlagUITests.swift */; };
 /* End PBXBuildFile section */
 
@@ -51,8 +50,6 @@
 		21DA04392655284500A3E5B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		21DA043B2655284500A3E5B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		21DA04402655284500A3E5B9 /* GuessTheFlagTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GuessTheFlagTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		21DA04442655284500A3E5B9 /* GuessTheFlagTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuessTheFlagTests.swift; sourceTree = "<group>"; };
-		21DA04462655284500A3E5B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		21DA044B2655284500A3E5B9 /* GuessTheFlagUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GuessTheFlagUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		21DA044F2655284500A3E5B9 /* GuessTheFlagUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuessTheFlagUITests.swift; sourceTree = "<group>"; };
 		21DA04512655284500A3E5B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -127,7 +124,6 @@
 			isa = PBXGroup;
 			children = (
 				21DA042C2655284200A3E5B9 /* GuessTheFlag */,
-				21DA04432655284500A3E5B9 /* GuessTheFlagTests */,
 				21DA044E2655284500A3E5B9 /* GuessTheFlagUITests */,
 				210BAE65265D3CFB00A50918 /* QuizBrainTests */,
 				21DA042B2655284200A3E5B9 /* Products */,
@@ -158,15 +154,6 @@
 				21DA043B2655284500A3E5B9 /* Info.plist */,
 			);
 			path = GuessTheFlag;
-			sourceTree = "<group>";
-		};
-		21DA04432655284500A3E5B9 /* GuessTheFlagTests */ = {
-			isa = PBXGroup;
-			children = (
-				21DA04442655284500A3E5B9 /* GuessTheFlagTests.swift */,
-				21DA04462655284500A3E5B9 /* Info.plist */,
-			);
-			path = GuessTheFlagTests;
 			sourceTree = "<group>";
 		};
 		21DA044E2655284500A3E5B9 /* GuessTheFlagUITests */ = {
@@ -356,7 +343,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				21DA04452655284500A3E5B9 /* GuessTheFlagTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

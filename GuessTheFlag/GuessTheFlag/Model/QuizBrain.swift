@@ -45,7 +45,7 @@ class QuizBrain{
     }
     
     var correctAnswerText: String {
-        return countries[correctAnswer].uppercased()
+        return countries[safe: correctAnswer]!.uppercased()
     }
     
     var correctAnswerIndex: Int {
@@ -53,7 +53,7 @@ class QuizBrain{
     }
     
     func checkAnswer(answer: Int) -> Bool {
-        let isCorrect = countries[safe: correctAnswer] == countries[answer]
+        let isCorrect = countries[safe: correctAnswer] == countries[safe: answer]
         score += isCorrect ? 1 : -1
         return isCorrect
     }
