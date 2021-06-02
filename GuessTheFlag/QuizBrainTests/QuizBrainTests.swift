@@ -9,7 +9,7 @@ import XCTest
 
 class QuizBrainTests: XCTestCase {
     
-    var quizBrain: QuizBrain?
+    var quizBrain = QuizBrain()
 
     override func setUpWithError() throws {
         quizBrain = QuizBrain()
@@ -18,7 +18,7 @@ class QuizBrainTests: XCTestCase {
     func testIsValidCountryWithIndexZero() {
         let index = 0
         
-        let actualCountryName = quizBrain!.getCountryAtIndex(index: index)
+        let actualCountryName = quizBrain.getCountryAtIndex(index: index)
         let comparativeCountryName = ""
             
         XCTAssertNotEqual(actualCountryName, comparativeCountryName)
@@ -27,7 +27,7 @@ class QuizBrainTests: XCTestCase {
     func testIsInvalidIndexWithIndexFour() {
         let index = 4
         
-        let actualCountryName = quizBrain!.getCountryAtIndex(index: index)
+        let actualCountryName = quizBrain.getCountryAtIndex(index: index)
         let expectedCountryName = ""
         
         XCTAssertEqual(actualCountryName, expectedCountryName)
@@ -36,16 +36,16 @@ class QuizBrainTests: XCTestCase {
     func testIsInvalidIndexWithNegativeIndex() {
         let index = -1
         
-        let actualCountryName = quizBrain!.getCountryAtIndex(index: index)
+        let actualCountryName = quizBrain.getCountryAtIndex(index: index)
         let expectedCountryName = ""
         
         XCTAssertEqual(actualCountryName, expectedCountryName)
     }
     
     func testNextQuestionAdvancesProgress() {
-        let currentProgress = Float(quizBrain!.progress )
-        quizBrain!.nextQuestion()
-        let newProgress = Float(quizBrain!.progress )
+        let currentProgress = Float(quizBrain.progress )
+        quizBrain.nextQuestion()
+        let newProgress = Float(quizBrain.progress )
         
         let actualProgressDifference = newProgress - currentProgress
         let expectedProgressDifference: Float = 0.1
@@ -54,9 +54,9 @@ class QuizBrainTests: XCTestCase {
     }
     
     func testIfCheckAnswerIsCorrectScoreIncreasesBy1() {
-        let initialScore = quizBrain!.score
-        let _ = quizBrain!.checkAnswer(answer: quizBrain!.correctAnswerIndex)
-        let finalScore = quizBrain!.score
+        let initialScore = quizBrain.score
+        let _ = quizBrain.checkAnswer(answer: quizBrain.correctAnswerIndex)
+        let finalScore = quizBrain.score
         
         let actualScoreDifference = finalScore - initialScore
         let expectedScoreDifference = 1
@@ -65,9 +65,9 @@ class QuizBrainTests: XCTestCase {
     }
     
     func testIfCheckAnswerIsIncorrectScoreDecreasesBy1() {
-        let initialScore = quizBrain!.score
-        let _ = quizBrain!.checkAnswer(answer: quizBrain!.correctAnswerIndex + 1 % 4)
-        let finalScore = quizBrain!.score
+        let initialScore = quizBrain.score
+        let _ = quizBrain.checkAnswer(answer: quizBrain.correctAnswerIndex + 1 % 4)
+        let finalScore = quizBrain.score
         
         let actualScoreDifference = finalScore - initialScore
         let expectedScoreDifference = -1
@@ -76,9 +76,9 @@ class QuizBrainTests: XCTestCase {
     }
     
     func testIfCheckAnswerIsInvalidDueToIndexScoreDecreasesBy1() {
-        let initialScore = quizBrain!.score
-        let _ = quizBrain!.checkAnswer(answer: -1)
-        let finalScore = quizBrain!.score
+        let initialScore = quizBrain.score
+        let _ = quizBrain.checkAnswer(answer: -1)
+        let finalScore = quizBrain.score
         
         let actualScoreDifference = finalScore - initialScore
         let expectedScoreDifference = -1
@@ -87,18 +87,18 @@ class QuizBrainTests: XCTestCase {
     }
     
     func testResetSetsScoreToZero() {
-        let _ = quizBrain!.checkAnswer(answer: quizBrain!.correctAnswerIndex + 1 % 4)
-        quizBrain!.reset()
+        let _ = quizBrain.checkAnswer(answer: quizBrain.correctAnswerIndex + 1 % 4)
+        quizBrain.reset()
         
-        let actualScore = quizBrain!.score
+        let actualScore = quizBrain.score
         let expectedScore = 0
         
         XCTAssertEqual(actualScore, expectedScore)
     }
     
     func testResetSetsProgressToZero() {
-        let _ = quizBrain!.checkAnswer(answer: quizBrain!.correctAnswerIndex + 1 % 4)
-        quizBrain!.reset()
+        let _ = quizBrain.checkAnswer(answer: quizBrain.correctAnswerIndex + 1 % 4)
+        quizBrain.reset()
         
         let actualProgress = 0.0
         let expectedProgress = 0.0
